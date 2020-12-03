@@ -14,7 +14,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/freetonik/vscode-dnts"
+        "url": "https://github.com/djemar/vscode-dnts"
     },
     "engines": {
         "vscode": "^1.16.0"
@@ -66,6 +66,7 @@
                     "default": "Visual Studio Dark",
                     "description": "The night theme"
                 },
+            
                 "dayNightThemeSwitcher.nightThemeCustomizations": {
                     "type": "object",
                     "default": {},
@@ -97,10 +98,10 @@
         "test": "npm run compile && node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "typescript": "^2.5.2",
-        "vscode": "^1.1.5",
-        "mocha": "^3.5.0",
+        "@types/mocha": "^2.2.43",
         "@types/node": "^7.0.43",
-        "@types/mocha": "^2.2.42"
+        "mocha": "^3.5.0",
+        "typescript": "^2.5.2",
+        "vscode": "^1.1.5"
     }
 }

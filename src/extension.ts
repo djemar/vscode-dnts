@@ -14,7 +14,7 @@ function updateSettings() {
   dayThemeCustomizations = extensionConfig.dayThemeCustomizations;
 }
 
-export function activate(context: vscode.ExtensionContext) {
+export async function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.workspace.onDidChangeConfiguration(updateSettings, this);
   let extPrefix = "dayNightThemeSwitcher";
   let themeKey = "workbench.colorTheme";
@@ -35,14 +35,18 @@ export function activate(context: vscode.ExtensionContext) {
     let currentTheme = vscode.workspace.getConfiguration().get(themeKey);
     if (currentTheme === dayTheme) {
       userConfig.update(themeKey, nightTheme, true);
+      userConfig.update("workbench.colorCustomizations", nightThemeCustomizations, true);
     } else if (currentTheme === nightTheme) {
       userConfig.update(themeKey, dayTheme, true);
+      userConfig.update("workbench.colorCustomizations", dayThemeCustomizations, true);
     } else {
       let toggleDefaultDark = vscode.workspace.getConfiguration().get(extPrefix + '.toggleDefaultDark');
       if (toggleDefaultDark) {
         userConfig.update(themeKey, nightTheme, true);
+        userConfig.update("workbench.colorCustomizations", nightThemeCustomizations, true);
       } else {
         userConfig.update(themeKey, dayTheme, true);
+        userConfig.update("workbench.colorCustomizations", dayThemeCustomizations, true);
       }
     }
   });
